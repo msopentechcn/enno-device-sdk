@@ -1,1 +1,1 @@
-# openiot-device
+# Enno Device SDK
