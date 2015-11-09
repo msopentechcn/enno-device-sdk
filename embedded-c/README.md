@@ -14,7 +14,7 @@ Directory structure Current SDK Directory Layout :
 
 |--docs(Developer guide & API documentation)
   
-Only two steps are needed to run the sample:
+Only 3 steps are needed to run the basic sample application:
 
 ## Build 
 
@@ -32,7 +32,7 @@ $cd samples/simple-pubsub
 $./simple-pubsub
 ```
 
-The output of the application should be:
+The output  should be:
 ```
 Connecting to enno server 139.217.10.99:1883...connected.
 Subscribing system topic...subscribed.
@@ -45,9 +45,9 @@ Location updated.
 
 ```
 
-##Verify data on the Enno platform:
+##Verify
 
-Login to [Enno platform](http://http://sitewhere.chinacloudapp.cn:8080/sitewhere/admin/devices/list.html)
+Login to [Enno platform](http://http://sitewhere.chinacloudapp.cn:8080/sitewhere/admin/devices/list.html).
 
 An Arduino device should already been registered:
  
@@ -57,3 +57,4 @@ Drill down the device link, you should see the location data is continous updati
 
 ![](http://i.imgur.com/AaHZhlV.png)
     
+Now you already have your device successfully connected.
