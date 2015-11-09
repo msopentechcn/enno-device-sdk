@@ -8,8 +8,8 @@ SOURCE_ROOT
 |── src(Source files of the enno IoT device SDK)
 |── protocol_lib(communication protocol library, current Paho MQTT only)
 |── serialization_lib(serialization library, current nanopb only)
-|──samples(sample application project for different platforms and protocols)
-|──docs(Developer guide & API documentation)
+|── samples(sample application project for different platforms and protocols)
+|── docs(Developer guide & API documentation)
 
 ``` 
   
