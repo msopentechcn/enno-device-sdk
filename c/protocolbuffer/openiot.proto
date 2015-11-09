@@ -1,0 +1,93 @@
+option optimize_for = LITE_RUNTIME;
+
+option java_package = "com.openiot.device.provisioning.protobuf.proto";
+
+// Encapsulates data sent to OpenIoT.
+message OpenIoT {
+
+	enum Command {REGISTER = 1; ACKNOWLEDGE = 2; DEVICELOCATION = 3; DEVICEALERT = 4; DEVICEMEASUREMENT = 5; } 
+	
+	// Header contains the command and originator.
+	message Header {
+		required Command command = 1;
+		optional string originator = 2;
+	}
+	
+	// A single piece of metadata.
+	message Metadata {
+		required string name = 1;
+		required string value = 2;
+	}
+
+	// Register a device with OpenIoT.
+	message RegisterDevice {
+		required string hardwareId = 1;
+		required string specificationToken = 2;
+		repeated Metadata metadata = 3;
+		optional string siteToken = 4;
+	}
+
+	// Acknowledge previous command.
+	message Acknowledge {
+		required string hardwareId = 1;
+		optional string message = 2;
+	}
+
+	// Report device location.
+	message DeviceLocation {
+		required string hardwareId = 1;
+		required string latitude = 2;
+		required string longitude = 3;
+		optional string elevation = 4;
+		optional fixed64 eventDate = 5;
+		repeated Metadata metadata = 6;
+	}
+
+	// Report device alert.
+	message DeviceAlert {
+		required string hardwareId = 1;
+		required string alertType = 2;
+		required string alertMessage = 3;
+		optional fixed64 eventDate = 4;
+		repeated Metadata metadata = 5;
+	}
+	
+	// A single measurement.
+	message Measurement {
+		required string measurementId = 1;
+		required string measurementValue = 2;
+	}
+
+	// Event message for device measurements.
+	message DeviceMeasurements {
+		required string hardwareId = 1;
+		repeated Measurement measurement = 2;
+		optional fixed64 eventDate = 3;
+		repeated Metadata metadata = 4;
+	}
+}
+
+// Encapsulates data received from SiteWhere.
+message Device {
+
+	enum Command {REGISTER_ACK = 1; } 
+	
+	// Header contains the command and originator.
+	message Header {
+		required Command command = 1;
+		optional string originator = 2;
+		optional string nestedPath = 3;
+		optional string nestedSpec = 4;
+	}
+
+	// Enumeration of registation state responses.
+	enum RegistrationAckState {NEW_REGISTRATION = 1; ALREADY_REGISTERED = 2; REGISTRATION_ERROR = 3;} 
+	enum RegistrationAckError {INVALID_SPECIFICATION = 1; SITE_TOKEN_REQUIRED = 2; NEW_DEVICES_NOT_ALLOWED = 3;} 
+
+	// Acknowledges registration.
+	message RegistrationAck {
+		required RegistrationAckState state = 1;
+		optional RegistrationAckError errorType = 2;
+		optional string errorMessage = 3;
+	}
+}

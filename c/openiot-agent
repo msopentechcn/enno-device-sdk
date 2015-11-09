@@ -1,0 +1,12 @@
+#!/bin/sh /etc/rc.common 
+START=99
+STOP=10
+start() 
+{
+    sleep 10
+    /usr/bin/openiot-agent.sh > /var/log/openiot-agent.log 2>&1 &
+}
+stop() {
+    killall -9 openiot-agent.sh
+    killall -9 openiot-agent.bin
+}

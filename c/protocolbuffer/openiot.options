@@ -1,0 +1,47 @@
+# This file defines the nanopb-specific options for OpenIoT protos.
+
+############################
+# Fields Sent to OpenIoT #
+############################
+
+# Max lengths for Header.
+OpenIoT.Header.originator 						max_size:30
+
+# Max lengths for RegisterDevice.
+OpenIoT.RegisterDevice.hardwareId 				max_size:40
+OpenIoT.RegisterDevice.specificationToken 		max_size:40
+
+# Max lengths for Acknowledge.
+OpenIoT.Acknowledge.hardwareId 					max_size:40
+OpenIoT.Acknowledge.message 						max_size:70
+
+# Max lengths for DeviceLocation.
+OpenIoT.DeviceLocation.hardwareId 				max_size:40
+OpenIoT.DeviceLocation.latitude					max_size:10	
+OpenIoT.DeviceLocation.longitude					max_size:10
+OpenIoT.DeviceLocation.elevation					max_size:10
+
+# Max lengths for DeviceAlert.
+OpenIoT.DeviceAlert.hardwareId 					max_size:40
+OpenIoT.DeviceAlert.alertType 					max_size:40
+OpenIoT.DeviceAlert.alertMessage 					max_size:70
+
+# Max lengths for Measurement.
+OpenIoT.Measurement.measurementId					max_size:30
+OpenIoT.Measurement.measurementValue					max_size:16
+
+# Max lengths for DeviceMeasurements.
+OpenIoT.DeviceMeasurements.hardwareId 			max_size:40
+OpenIoT.DeviceMeasurements.measurement			max_count:5
+
+##################################
+# Fields Received from OpenIoT #
+##################################
+
+# Max lengths for header.
+Device.Header.originator 							max_size:30
+Device.Header.nestedPath 							max_size:50
+Device.Header.nestedSpec 							max_size:40
+
+# Max lengths for registrationAck().
+Device.RegistrationAck.errorMessage 				max_size:70
