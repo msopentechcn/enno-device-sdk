@@ -1,39 +1,55 @@
-# enno-device
-Microsoft Enno IoT SDK
+# Microsoft Enno Device SDK
 
-This repository contains IoT device SDK, which enables you connect client devices to Azure IoT Hub.
+This repository contains IoT device SDK for Enno platform.
 
 Directory structure Current SDK Directory Layout :
 
-|--enno_src(Source files of the enno IoT device SDK)
-|--enno_client(Client library)
-|--enno_serialization(enno serialization library, base on nano pb)
-|--samples(makefiles to build sample)
+|--src(Source files of the enno IoT device SDK)
+|--protocol_lib(communication protocol library, current Paho MQTT only)
+|--serialization_lib(serialization library, current nanopb only)
+|--samples(sample application project for different platforms and protocols)
 |--docs(Developer guide & API documentation)
-
-The fast way to leanr about the API is to run the sample:
-The sample shows a simple example to subscribe a topic, and then publish a few message(including registeing the device,
-  publishing an Alert message and so on) to it. The default message to publish is "Alert", if you wanna test the other
-  message(for example "Location"), you should set up the info_t in as 'L': 
-       enno_publish(PublishParams *pParams, char Info_t ,EnnoParams *Params_enno);
-       info_t may set up as :
-         'R': which means to publish the Registeration
-         'A': which means to publish the Alert
-         'M': which means to publish the Measurement
-         'L': which means to publish the Location
   
-You need two steps to run the sample:
-  ## Build 
-   To build the project and generate the executable file, you should input the following commands:
-     cd ../samples/linux_platform/mqtt
-     sh ./build1.sh
-     then will generate the executable file---subpub
+Only two steps are needed to run the sample:
 
+## Build 
 
-  ## run
-    To run the sample, you only need input the following command:
-     ./subpub
+To build the project and generate the executable file, you should input the following commands:
+```
+$cd YOUR_SOURCE_ROOT
+$mkdir build && cd build
+$cmake ..
+$make
+```
+This will automatically generate all the application in the samples directory for you.
+## Run
+```
+$cd samples/simple-pubsub
+$./simple-pubsub
+```
+
+The output of the application should be:
+```
+Connecting to enno server 139.217.10.99:1883...connected.
+Subscribing system topic...subscribed.
+Send device registeration...sent.
+Registered new device
+Location updated.
+Location updated.
+Location updated.
+Location updated.
+
+```
+
+##Verify data on the Enno platform:
+
+Login to [Enno platform](http://http://sitewhere.chinacloudapp.cn:8080/sitewhere/admin/devices/list.html)
+
+An Arduino device should already been registered:
+ 
+![](http://i.imgur.com/iglx2Ax.png)
+
+Drill down the device link, you should see the location data is continous updating:
+
+![](http://i.imgur.com/AaHZhlV.png)
     
-    
-
-
