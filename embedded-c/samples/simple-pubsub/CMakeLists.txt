@@ -9,6 +9,7 @@ include_directories(${ROOT_SOURCE_DIR}/src/common)
 include_directories(${ROOT_SOURCE_DIR}/protocol_lib/mqtt/MQTTClient-C/src)
 include_directories(${ROOT_SOURCE_DIR}/protocol_lib/mqtt/MQTTPacket/src)
 include_directories(${ROOT_SOURCE_DIR}/src/protocol/mqtt)
+include_directories(${ROOT_SOURCE_DIR}/src/protocol)
 include_directories(${ROOT_SOURCE_DIR}/src/protocol/mqtt/platform_linux)
 include_directories(${ROOT_SOURCE_DIR}/serialization_lib/protobuf)
 include_directories(./)
@@ -35,6 +36,7 @@ set(SOURCE_FILES
         ${ROOT_SOURCE_DIR}/serialization_lib/protobuf/sitewhere.pb.c
         ${ROOT_SOURCE_DIR}/src/protocol/mqtt/platform_linux/network_linux.c
         ${ROOT_SOURCE_DIR}/src/protocol/mqtt/platform_linux/timer_linux.c
-        ${ROOT_SOURCE_DIR}/src/protocol/mqtt/enno_api_mqtt_wrapper.c)
+        ${ROOT_SOURCE_DIR}/src/protocol/mqtt/enno_api_mqtt_wrapper.c
+        ${ROOT_SOURCE_DIR}/src/protocol/enno_api.c)
 
 add_executable(simple-pubsub ${SOURCE_FILES})
