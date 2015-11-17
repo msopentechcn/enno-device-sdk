@@ -19,8 +19,7 @@
 
 #include "MQTTPacket.h"
 #include "stdio.h"
-//Platform specific implementation header file
-#include "timer_interface.h"
+#include "timer_interface.h"             //Platform specific implementation header file
 #include "network_interface.h"
 
 #define MAX_PACKET_ID 65535
