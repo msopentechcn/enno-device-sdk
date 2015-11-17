@@ -118,9 +118,6 @@ void echoMessageHandler(MessageData *md) {
 }
 
 
-
-
-//warning static?
 static Error_t parseConnectParamsForError(char *hostURL) {
     Error_t rc = NONE_ERROR;
     if (
@@ -150,14 +147,14 @@ Error_t enno_connect(char *hostURL, uint16_t port, char *appKey){
             }
             MQTTPacket_connectData data = MQTTPacket_connectData_initializer;
             data.willFlag = 0;
-            data.MQTTVersion = 4;                                                           //or 3?  CAUTION: MQTT VERSION, AWS VS PAHO, once caused a error!!!
+            data.MQTTVersion = 4;
             data.clientID.cstring = ConnectParamsDefault.pClientID;
             data.username.cstring = ConnectParamsDefault.pUserName;
             data.password.cstring = ConnectParamsDefault.pPassword;
 
             data.will.topicName.cstring = (char *) ConnectParamsDefault.will.pTopicName;
             data.will.message.cstring = (char *) ConnectParamsDefault.will.pMessage;
-            data.will.qos = ConnectParamsDefault.will.qos;                                  //QOS
+            data.will.qos = ConnectParamsDefault.will.qos;
             data.will.retained = ConnectParamsDefault.will.isRetained;
 
             data.keepAliveInterval = ConnectParamsDefault.KeepAliveInterval_Sec;
@@ -183,7 +180,7 @@ Error_t enno_subscribe(char *topic, void *callback){
     Error_t rc = NONE_ERROR;
 
     callbackRef = callback;
-    if (0 != MQTTSubscribe(&c, topic, (enum QoS) QOS_0, callbackWrapper)){                      //default QoSLevel is QOS_0, change it when you need
+    if (0 != MQTTSubscribe(&c, topic, (enum QoS) QOS_0, callbackWrapper)){
         rc = SUBSCRIBE_ERROR;
     }
     return rc;
