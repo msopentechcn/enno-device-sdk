@@ -68,6 +68,7 @@ extern EnnoMessages EnnoMessagesDefault;
  *
  */
 void ennoSystemMessageHandler(char* topic, char* payload, int length);
+void ennoCommandMessageHandler(char* topic, char* payload, int length);
 
 /**
  * @brief Connection Function

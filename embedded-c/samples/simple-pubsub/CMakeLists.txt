@@ -34,6 +34,7 @@ set(SOURCE_FILES
         ${ROOT_SOURCE_DIR}/serialization_lib/protobuf/pb_encode.c
         ${ROOT_SOURCE_DIR}/serialization_lib/protobuf/sitewhere.c
         ${ROOT_SOURCE_DIR}/serialization_lib/protobuf/sitewhere.pb.c
+        ${ROOT_SOURCE_DIR}/serialization_lib/protobuf/custom.c
         ${ROOT_SOURCE_DIR}/src/protocol/mqtt/platform_linux/network_linux.c
         ${ROOT_SOURCE_DIR}/src/protocol/mqtt/platform_linux/timer_linux.c
         ${ROOT_SOURCE_DIR}/src/protocol/mqtt/enno_api_mqtt_wrapper.c
