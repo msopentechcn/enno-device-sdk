@@ -1,21 +1,14 @@
 /*
  * enno_api_mqtt_wrapper.c
  *
- *  Created on: 2015Äê11ÔÂ20ÈÕ
+ *  Created on: 2015å¹´11æœˆ20æ—¥
  *      Author: v-chawei
  */
 #include "pb_decode.h"
 #include "sitewhere.h"
 #include "sitewhere.pb.h"
 #include "enno_api.h"
-/*
- int trans_connect(char *hostURL, uint16_t port, char *appKey);
- int trans_subscribe(char *topic, char *topicType);
- int trans_publish(char *path, char *payload, int payloadlen);
- int trans_unsubscribe(char *pTopic);
- int trans_disconnect();
- int trans_loop(int timeout);
-*/
+
 //static iot_disconnect_handler clientDisconnectHandler;    //warning defined but not used
 
 /**
@@ -122,20 +115,13 @@ static Error_t parseConnectParamsForError(char *hostURL) {
     return rc;
 }
 
-
-
 Error_t enno_connect(char *hostURL, uint16_t port, char *appKey){
     Error_t rc = NONE_ERROR;
     rc =  parseConnectParamsForError(hostURL);
     int i = 0;
-  /*  if (NULL == hostURL) {
-            rc = NULL_VALUE_ERROR;
-            printf("ERROR: hostURL can not be empty!\n");
-        }*/
     if (rc == NONE_ERROR){
         if((i=trans_connect(hostURL, port, appKey))!=0){
-          //  rc = CONNECTION_ERROR;
-        	rc = i;
+            rc = i;
         }
     }
     return rc;

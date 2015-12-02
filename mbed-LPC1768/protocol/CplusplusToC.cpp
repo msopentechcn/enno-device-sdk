@@ -1,7 +1,7 @@
 /*
  * CplusplusToC.c
  *
- *  Created on: 2015Äê11ÔÂ20ÈÕ
+ *  Created on: 2015å¹´11æœˆ20æ—¥
  *      Author: v-chawei
  */
 #include "MQTTEthernet.h"
@@ -11,8 +11,8 @@
 
 static MQTTEthernet ipstack = MQTTEthernet();
 static MQTT::Client<MQTTEthernet, Countdown> client = MQTT::Client<MQTTEthernet, Countdown>(ipstack);
-int symbol=0;
 int arrivedcount=0;
+int symbol=0;
 
 extern "C"{
     int trans_connect(char *hostURL, uint16_t port, char *appKey);
@@ -26,8 +26,8 @@ extern "C"{
  int trans_connect(char *hostURL, uint16_t port, char *appKey){
      int i = 0;
      if( symbol==0 ){
-    	 ipstack.start();
-    	 symbol=1;
+         ipstack.start();
+         symbol=1;
      }
      i = ipstack.connect(hostURL, port);
      if (i == 0 ){
@@ -37,7 +37,7 @@ extern "C"{
          data.username.cstring = NULL;
          data.password.cstring = NULL;
          if ((i = client.connect(data)) != 0)
-        	 printf("Error: connect failed %d\n", i);
+             printf("Error: connect failed %d\n", i);
      }
      return i;
 }
@@ -45,20 +45,17 @@ extern "C"{
 
  void systemMessageHandler(MQTT::MessageData& md)
  {
- 	uint8_t buffer[512];
+    uint8_t buffer[512];
      MQTT::Message &message = md.message;
      printf("system message received.\n");
      printf("Message arrived: qos %d, retained %d, dup %d, packetid %d\n", message.qos, message.retained, message.dup, message.id);
      printf("Payload %.*s\n", message.payloadlen, (char*)message.payload);
      ++arrivedcount;
      ennoSystemMessageHandler(md.topicName.cstring, (char*)message.payload, message.payloadlen);
- //    extern "C"{
- //    callbackRef(md.topicName.cstring, message.payload, message.payloadlen);
- //    }
  }
  void commandMessageHandler(MQTT::MessageData& md)
   {
-  	uint8_t buffer[512];
+    uint8_t buffer[512];
       MQTT::Message &message = md.message;
       printf("command message received.\n");
       printf("Message arrived: qos %d, retained %d, dup %d, packetid %d\n", message.qos, message.retained, message.dup, message.id);
@@ -68,13 +65,13 @@ extern "C"{
 int trans_subscribe(char *topic, char *topicType){
      int i = 0;
      if((strcmp(topicType,"system")) == 0){
-		 if ((i = client.subscribe(topic, MQTT::QOS2, systemMessageHandler)) != 0){
-			 printf("Error: subscribe failed %d\n", i);
-		 }
+         if ((i = client.subscribe(topic, MQTT::QOS2, systemMessageHandler)) != 0){
+             printf("Error: subscribe failed %d\n", i);
+         }
      }else{
-    	 if ((i = client.subscribe(topic, MQTT::QOS2, commandMessageHandler)) != 0){
-    	 			 printf("Error: subscribe failed %d\n", i);
-    	  }
+         if ((i = client.subscribe(topic, MQTT::QOS2, commandMessageHandler)) != 0){
+                     printf("Error: subscribe failed %d\n", i);
+          }
      }
      return i;
 }

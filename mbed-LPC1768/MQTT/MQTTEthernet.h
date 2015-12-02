@@ -11,15 +11,18 @@ class MQTTEthernet : public MQTTSocket
 public:    
     MQTTEthernet()
     {
-        eth.init();                          // Use DHCP
-        eth.connect();
+  //      eth.init();                          // revised by v-chawei to adapt enno SDK
+  //      eth.connect();
     }
     
     EthernetInterface& getEth()
     {
         return eth;
     }
-    
+    void start(){
+        eth.init();                          // Use DHCP  dedined by v-chawei to adapt enno SDK
+        eth.connect();
+    }
     void reconnect()
     {
         eth.connect();  // nothing I've tried actually works to reconnect 

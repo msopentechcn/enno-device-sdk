@@ -1,7 +1,14 @@
-#ifndef _ENNO_CONFIG_H
-#define _ENNO_CONFIG_H
+/*
+ * enno_config.h
+ *
+ *  Created on: 2015年11月20日
+ *      Author: v-chawei
+ */
 
-#if defined(__cplusplus)
+#ifndef ENNO_CONFIG_H_
+#define ENNO_CONFIG_H_
+
+#ifdef __cplusplus
 extern "C" {
 #endif
 
@@ -11,4 +18,4 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-#endif
+#endif /* ENNO_CONFIG_H_ */

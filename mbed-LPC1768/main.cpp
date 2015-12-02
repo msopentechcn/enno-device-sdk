@@ -1,7 +1,7 @@
 /*
  * ennoForMbed.c
  *
- *  Created on: 2015Äê11ÔÂ20ÈÕ
+ *  Created on: 2015å¹´11æœˆ20æ—¥
  *      Author: v-chawei
  */
 #include "mbed.h"
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
     char *ennoCommandPrefix = "SiteWhere/commands/";
     char *ennoSystemPrefix = "SiteWhere/system/";
     char *ennoSystemInbound = "SiteWhere/input/protobuf";
-    char *deviceId = "enno-xbed-test-30";
+    char *deviceId = "enno-mbed-test-id-1";
     char *topicType = "command";
     char *hostURL = "139.217.10.99";
     int port = 1883;
@@ -55,8 +55,8 @@ int main(int argc, char* argv[]){
 
     rc = enno_subscribe(systemTopic, topicType);
     if (NONE_ERROR != rc) {
-	   printf("Error on subscrie system topic.");
-	   exit(rc);
+       printf("Error on subscrie system topic.");
+       exit(rc);
     }
    printf("subscribed.\n");
 
@@ -74,13 +74,13 @@ int main(int argc, char* argv[]){
     printf("sent.\n");
     Messages_enno.messageType = 'L';
     // main loop
-	while (NONE_ERROR == rc) {
-		enno_loop(1000);
-	//	sleep(1);
-		rc = enno_publish(ennoSystemInbound, &Messages_enno);
-		led2=!led2;
-		printf("Location updated.\n");
-	}
+    while (NONE_ERROR == rc) {
+        enno_loop(1000);
+    //  sleep(1);
+        rc = enno_publish(ennoSystemInbound, &Messages_enno);
+        led1=!led1;
+        printf("Location updated.\n");
+    }
 
     return rc;
 }

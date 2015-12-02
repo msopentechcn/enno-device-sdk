@@ -1,14 +1,16 @@
-#ifndef ENNO_ERROR_INTERFACE_H
-#define ENNO_ERROR_INTERFACE_H
+/*
+ * enno_error.h
+ *
+ *  Created on: 2015年11月20日
+ *      Author: wzy
+ */
 
-#if defined(__cplusplus) /* If this is a C++ compiler, use C linkage */
+#ifndef COM_ENNO_ERROR_H_
+#define COM_ENNO_ERROR_H_
+
+#if defined(__cplusplus)
 extern "C" {
 #endif
-/**
- * @brief IoT Error enum
- *
- * Enumeration of return values from the IoT_* functions within the SDK.
- */
 
 typedef enum {
     NONE_ERROR = 0,
@@ -32,8 +34,8 @@ typedef enum {
             UNSUBSCRIBE_ERROR = -15,            /** The unsubscribe failed.  The unsubscribe control packet could not be sent. */
 
 } Error_t;
-#ifdef __cplusplus /* If this is a C++ compiler, use C linkage */
+
+#ifdef __cplusplus
 }
 #endif
-
-#endif
+#endif /* COM_ENNO_ERROR_H_ */

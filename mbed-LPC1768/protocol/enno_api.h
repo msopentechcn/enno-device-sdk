@@ -1,16 +1,12 @@
 /*
  * enno_api.h
  *
- *  Created on: 2015Äê11ÔÂ20ÈÕ
+ *  Created on: 2015å¹´11æœˆ20æ—¥
  *      Author: v-chawei
  */
-
 #ifndef PROTOCOL_ENNO_API_H_
 #define PROTOCOL_ENNO_API_H_
 
-//
-// Created by root on 11/10/15.
-//
 #if defined(__cplusplus)
 extern "C" {
 #endif
@@ -69,7 +65,7 @@ typedef struct {
     Alert_enno Alert;
 } EnnoMessages;
 
-#define EnnoMessagesDefault {'R',{"enno-xbed-test-25", "417b36a8-21ef-4196-a8fe-cc756f994d0b", NULL},{"enno-xbed-test-25", NULL, NULL},{"enno-xbed-test-25", "temperature", NULL, 10, 0},{"enno-xbed-test-25", NULL, 27.59, 86.55, 8844.43, 0},{"enno-xbed-test-25", "enno.info", "I am alive", NULL, 0}}
+#define EnnoMessagesDefault {'R',{"enno-mbed-test-id-1", "9556b504-52cc-4194-89c0-f301a782b286", NULL},{"enno-mbed-test-id-1", NULL, NULL},{"enno-mbed-test-id-1", "temperature", NULL, 10, 0},{"enno-mbed-test-id-1", NULL, 27.59, 86.55, 8844.43, 0},{"enno-mbed-test-id-1", "enno.info", "I am alive", NULL, 0}}
 /**
  * @brief Handles the system callback message
  *
