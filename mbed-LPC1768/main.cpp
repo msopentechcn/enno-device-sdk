@@ -76,7 +76,6 @@ int main(int argc, char* argv[]){
     // main loop
     while (NONE_ERROR == rc) {
         enno_loop(1000);
-    //  sleep(1);
         rc = enno_publish(ennoSystemInbound, &Messages_enno);
         led1=!led1;
         printf("Location updated.\n");

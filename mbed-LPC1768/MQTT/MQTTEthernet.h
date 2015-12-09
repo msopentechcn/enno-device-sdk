@@ -20,7 +20,7 @@ public:
         return eth;
     }
     void start(){
-        eth.init();                          // Use DHCP  dedined by v-chawei to adapt enno SDK
+        eth.init();                           // Use DHCP  dedined by v-chawei to adapt enno SDK
         eth.connect();
     }
     void reconnect()
